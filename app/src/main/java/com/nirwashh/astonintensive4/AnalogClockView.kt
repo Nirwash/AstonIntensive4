@@ -95,7 +95,7 @@ class AnalogClockView @JvmOverloads constructor(
 
     private fun drawArrow(
         canvas: Canvas,
-        time: Int,
+        time: Float,
         color: Int,
         strokeWidth: Float,
         strokeLength: Float
@@ -103,7 +103,7 @@ class AnalogClockView @JvmOverloads constructor(
         paint.color = color
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = strokeWidth
-        val angle = PI.toFloat() * time / 30f - PI.toFloat() / 2f
+        val angle = PI.toFloat() * time / 30 - PI.toFloat() / 2
         canvas.drawLine(
             centreX - cos(angle) * (strokeLength / 100 * 30),
             centreY - sin(angle) * (strokeLength / 100 * 30),
@@ -119,6 +119,6 @@ class AnalogClockView @JvmOverloads constructor(
         val lengthHourArrow = radius / 2
         drawArrow(canvas, time.getSeconds(), defColor, bigBorderWidth, lengthSecondArrow)
         drawArrow(canvas, time.getMinutes(), minutesColor, mediumBorderWidth, lengthMinuteArrow)
-        drawArrow(canvas, time.getHours(), hoursColor, smallBorderWidth, lengthHourArrow)
+        drawArrow(canvas, time.getHours() * 5, hoursColor, smallBorderWidth, lengthHourArrow)
     }
 }

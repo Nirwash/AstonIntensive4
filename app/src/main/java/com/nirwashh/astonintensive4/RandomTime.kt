@@ -1,5 +1,6 @@
 package com.nirwashh.astonintensive4
 
+import android.util.Log
 import kotlin.random.Random
 
 class RandomTime(
@@ -8,9 +9,9 @@ class RandomTime(
     private var seconds: Int = Random.nextInt(0, 59),
 ) {
 
-    fun getHours() = hours
-    fun getMinutes() = minutes
-    fun getSeconds() = seconds
+    fun getHours() = hours + minutes/60f
+    fun getMinutes() = minutes*1f
+    fun getSeconds() = seconds*1f
 
     private fun updateHours() {
         if (hours < 11) hours++ else hours = 0
@@ -36,5 +37,6 @@ class RandomTime(
 
     fun update() {
         updateSeconds()
+        Log.d("Time", "$hours:$minutes:$seconds")
     }
 }
